@@ -54,7 +54,7 @@ class MainActivity : ComponentActivity() {
                         Registrando(navController)
                     }
                     composable("home") {
-                        Home()
+                        Home(navController)
                     }
                 }
             }

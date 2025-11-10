@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
@@ -122,5 +124,18 @@ fun Login(navController: NavController) {
                     }
             )
         }
+    }
+    Box(
+        modifier = Modifier.fillMaxSize()
+    ){
+        Image(
+            painter = painterResource(R.drawable.folha_removebg_preview),
+            contentDescription = "Foto de uma folha",
+            modifier = Modifier
+                .align (Alignment.BottomStart)
+                .width(550.dp)
+                .size(300.dp),
+            contentScale = ContentScale.FillBounds
+        )
     }
 }
