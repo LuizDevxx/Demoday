@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -28,6 +29,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.demoday.ui.theme.DemodayTheme
+import kotlinx.coroutines.delay
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,6 +58,9 @@ class MainActivity : ComponentActivity() {
                     composable("home") {
                         Home(navController)
                     }
+                    composable("perfil") {
+                        Perfil(navController)
+                    }
                 }
             }
         }
@@ -83,9 +88,7 @@ fun Inicio(navController: NavController) {
                 contentDescription = "Logo parte da folha",
                 modifier = Modifier
                     .size(100.dp)
-                    .clickable {
-                        navController.navigate("tela_dois")
-                    }
+
             )
 
             Image(
@@ -94,9 +97,7 @@ fun Inicio(navController: NavController) {
                 modifier = Modifier
                     .size(170.dp)
                     .offset(y = -30.dp)
-                    .clickable {
-                        navController.navigate("tela_dois")
-                    }
+
             )
 
             Row (){
@@ -105,9 +106,7 @@ fun Inicio(navController: NavController) {
                     contentDescription = "Aurum logo",
                     modifier = Modifier
                         .offset(y = -31.dp)
-                        .clickable{
-                            navController.navigate("tela_dois")
-                        }
+
                 )
                 Spacer(modifier = Modifier.width(15.dp))
                 Image(
@@ -115,10 +114,14 @@ fun Inicio(navController: NavController) {
                     contentDescription = "Ébano logo",
                     modifier = Modifier
                         .offset(y = -41.dp)
-                        .clickable{
-                            navController.navigate("tela_dois")
-                        }
+
                 )
+            }
+        }
+        LaunchedEffect(Unit) {
+            delay(2000)
+            navController.navigate("tela_dois") {
+                popUpTo("MainActivity") { inclusive = true }
             }
         }
     }
